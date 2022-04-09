@@ -11,6 +11,41 @@
   </head>
 
   <body>
+
+    <header>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Users", user_path(current_user.id) %>
+        </li>
+        <li>
+          <%= link_to "New book", new_book_path %>
+        </li>
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
+          <%= link_to "sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "login", new_user_session_path %>
+        </li>
+      <% end %>
+    </header>
+
+
     <%= yield %>
+
+
+
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
+
+
   </body>
+
 </html>

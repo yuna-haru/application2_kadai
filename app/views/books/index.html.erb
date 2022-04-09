@@ -1,0 +1,9 @@
+<% @book.each do |book| %>
+<div>
+  <%= image_tag book.get_image %>
+  <p>user image：<%= image_tag 'no_image.jpg' %></p>
+  <p>book title：<%= book.title %></p>
+  <p>book opinion：<%= book.body %></p>
+  <p>user name：<%= book.user.name %></p>
+</div>
+<% end %>
