@@ -1,6 +1,6 @@
 <div>
   <%= image_tag @book.get_image %>
-  <%= image_tag 'no_image.jpg' %>
+  <%= image_tag book_image.user.get_profile_image(100,100) %>
   <%= @book.title %>
   <%= @book.body %>
   <% if @book.user == current_user %>
