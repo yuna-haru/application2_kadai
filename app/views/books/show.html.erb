@@ -1,9 +1,27 @@
 <div>
-  <%= image_tag @book.get_image %>
-  <%= image_tag book_image.user.get_profile_image(100,100) %>
-  <%= @book.title %>
-  <%= @book.body %>
-  <% if @book.user == current_user %>
-    <%= link_to "Destroy", books_path(@book), method: :delete %>
-  <% end %>
+  <h2>Book detail</h2>
+  <table>
+    <tbody>
+      <tr>
+        <tb>
+          <%= image_tag @book.get_image %>
+          <%= image_tag book_image.user.get_profile_image(100,100) %>
+        </tb>
+        <tb>
+          <%= @book.title %>
+        </tb>
+        <tb>
+          <%= @book.body %>
+        </tb>
+        <% if @book.user == current_user %>
+        <tb>
+          <%= link_to "Edit", book_path(@book) %>
+        </tb>
+        <tb>
+          <%= link_to "Destroy", books_path(@book), method: :delete %>
+        </tb>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
 </div>
