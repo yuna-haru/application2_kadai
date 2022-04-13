@@ -1,12 +1,40 @@
-<% @book.each do |book| %>
 <div>
-  <%= link_to book_image_path(book.id) do %>
-    <%= image_tag book.get_image %>
-  <% end %>
-  <p>user image：<%= image_tag book_image.user.get_profile_image(100,100) %></p>
-  <p>book title：<%= book.title %></p>
-  <p>book opinion：<%= book.body %></p>
-  <p>user name：<%= book.user.name %></p>
+  <div>
+
+    <div>
+      <%= render 'users/user.html.erb', user: @user %>
+    </div>
+
+    <div>
+      <h2>Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @book.each do |book| %>
+            <tb>
+              <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+            </tb>
+            <tb>
+              <p><%= link_to book.title, book_path(book.id) %></p>
+            </tb>
+            <tb>
+              <p><%= book.body %></p>
+            </tb>
+            <% end %>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+  </div>
 </div>
-<% end %>
-<%= link_to "book_title" books_path(book.id) %>
+

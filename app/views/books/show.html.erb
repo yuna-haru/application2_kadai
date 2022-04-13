@@ -2,13 +2,13 @@
   <h2>Book detail</h2>
   <table>
     <tbody>
+       <%= image_tag @book.user.get_profile_image(100,100) %>
       <tr>
         <tb>
-          <%= image_tag @book.get_image %>
-          <%= image_tag book_image.user.get_profile_image(100,100) %>
+          <%= @book.user.name %>
         </tb>
         <tb>
-          <%= @book.title %>
+          <%= link_to @book.title, book_path(@book.id) %>
         </tb>
         <tb>
           <%= @book.body %>
