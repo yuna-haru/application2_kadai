@@ -5,7 +5,7 @@
        <%= image_tag @book.user.get_profile_image(100,100) %>
       <tr>
         <tb>
-          <%= @book.user.name %>
+          <%= link_to @book.user.name, user_path(@user.id) %>
         </tb>
         <tb>
           <%= link_to @book.title, book_path(@book.id) %>
@@ -13,14 +13,16 @@
         <tb>
           <%= @book.body %>
         </tb>
-        <% if @book.user == current_user %>
         <tb>
-          <%= link_to "Edit", book_path(@book) %>
+          <% if @book.user == current_user %>
+            <%= link_to "Edit", edit_book_path %>
+          <% end %>
         </tb>
         <tb>
-          <%= link_to "Destroy", books_path(@book), method: :delete %>
+          <% if @book.user == current_user %>
+            <%= link_to "Destroy", book_path(@book), method: :delete %>
+          <% end %>
         </tb>
-        <% end %>
       </tr>
     </tbody>
   </table>

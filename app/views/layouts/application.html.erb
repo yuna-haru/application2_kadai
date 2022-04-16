@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
 
     <header>
       <% if user_signed_in? %>
@@ -29,6 +31,12 @@
         </li>
       <% else %>
         <li>
+          <%= link_to "Home", root_path %>
+        </li>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
           <%= link_to "sign up", new_user_registration_path %>
         </li>
         <li>
@@ -36,18 +44,14 @@
         </li>
       <% end %>
 
-      <div>
-        <% if @book.errors.any? %>
-          <%= @book.errors.count %> errors prohibited this obj from being saved:
-          <ul>
-            <% @book.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+
 
     </header>
+
+
 
     <main>
 

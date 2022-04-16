@@ -1,23 +1,49 @@
 <div>
   <div>
     <div>
+
+      <div>
+        <% if @booked.errors.any? %>
+          <%= @booked.errors.count %> errors prohibited this obj from being saved:
+          <ul>
+            <% @booked.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <h3>User info</h3>
-      <%= image_tag user.get_profile_image(100,100) %>
-      <label for="user_name">Name</label>
-      <p><%= user.name %></p>
-      <p>introduction</p>
-      <p><%= user.text %></p>
+      <%= image_tag user.get_profile_image(100,100) %><br>
+      <table>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
       <% if user == current_user %>
         <p><%= link_to "User info", edit_user_path(user) %></p>
       <% end %>
+
        <h1>New book</h1>
       <%= form_with model: @booked do |f| %>
-      <h4>Title</h4>
-      <%= f.text_field :title %>
-      <h4>Opinion</h4>
-      <%= f.text_area :body %><br>
+      <div>
+        <label for="title">Title</label><br>
+        <%= f.text_field :title, autofocus:true,  id:"title" %><br>
+      </div>
+      <div>
+        <label for="opinion">Opinion</label><br>
+        <%= f.text_area :body, autofocus:true, id:"opinion" %><br>
+      </div>
       <%= f.submit 'Create Book' %>
       <% end %>
+
     </div>
   </div>
 </div>

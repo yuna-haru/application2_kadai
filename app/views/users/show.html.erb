@@ -23,7 +23,7 @@
               <%= image_tag book.user.get_profile_image(100,100) %>
             </tb>
             <tb>
-              <p><%= book.title %></p>
+              <p><%= link_to book.title, book_path(book.id) %></p>
             </tb>
             <tb>
               <p>b<%= book.body %></p>
