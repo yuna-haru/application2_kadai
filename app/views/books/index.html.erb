@@ -20,10 +20,14 @@
           <% @book.each do |book| %>
           <tr>
             <td>
-              <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+              <p>
+                <%= link_to user_path(book.user) do %>
+                    <%= image_tag book.user.get_profile_image(100,100) %>
+                  <% end %>
+                </p>
             </td>
             <td>
-              <p><%= link_to book.title, book_path(book.id) %></p>
+              <p><%= link_to book.title, book_path(book.id),style: "color:blue;" %></p>
             </td>
             <td>
               <p><%= book.body %></p>
@@ -37,4 +41,3 @@
 
   </div>
 </div>
-
